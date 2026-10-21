@@ -1,0 +1,36 @@
+DRAKUS - interface do robo
+
+COMO USAR SEM IA (so para testar)
+1. Extraia o ZIP e abra o index.html no Chrome.
+2. Toque uma vez na tela e permita o microfone.
+3. Diga "ativar". Para voltar a tela de inicio, diga "desativar".
+Neste modo ele so responde "oi", "que horas sao" e "quem e voce".
+
+COMO LIGAR A IA (para ele responder qualquer pergunta)
+1. Crie uma chave de API em console.anthropic.com (menu API keys).
+2. No GitHub, crie um repositorio novo e envie index.html e netlify.toml
+   (Add file > Upload files).
+3. Ainda no GitHub: Add file > Create new file, com o nome
+   netlify/functions/chat.js  (a barra cria as pastas) e cole o conteudo
+   do arquivo chat.js que esta neste ZIP.
+4. No Netlify: Add new site > Import from Git > escolha o repositorio > Deploy.
+5. No Netlify: Site configuration > Environment variables > Add a variable:
+   nome ANTHROPIC_API_KEY, valor = sua chave. Depois Deploys > Trigger deploy.
+6. Abra o link https://....netlify.app no Chrome, permita o microfone
+   e diga "ativar".
+Obs.: o Netlify Drop (arrastar pasta) nao roda a funcao; use o GitHub.
+
+SE ELE NAO OUVIR
+- Use o Chrome. Safari/iPhone nao funciona para reconhecer voz.
+- O pontinho vermelho no canto superior direito acende quando ele esta ouvindo.
+- O Chrome precisa de internet para reconhecer voz.
+
+SE ELE NAO FALAR
+- A voz vem do aparelho. No Android, instale/atualize o "Servico de fala do Google"
+  e a voz em Portugues (Brasil). Se nao houver voz, o texto da resposta aparece na tela.
+
+CONFIGURACAO (no index.html, procure por CONFIG)
+- endpoint: funcao da IA (padrao /.netlify/functions/chat)
+- activateWord: palavra que liga a interface (padrao "ativar")
+- wakeWord: palavra para chamar nas conversas, ex.: "drakus" (vazio = responde a tudo)
+- speak: true/false liga ou desliga a voz
